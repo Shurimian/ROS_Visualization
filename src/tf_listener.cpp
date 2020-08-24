@@ -2,6 +2,8 @@
 #include <geometry_msgs/PointStamped.h>
 #include <tf/transform_listener.h>
 
+//NOTE: NOT CURRENTLY BEING USED. This node is for testing broadcast information
+
 void transformPoint(const tf::TransformListener& listener)
 {
   //we'll create a point in the base_laser frame that we'd like to transform to the base_link frame

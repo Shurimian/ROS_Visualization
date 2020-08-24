@@ -6,6 +6,8 @@ int main(int argc, char** argv)
 
   ros::init(argc, argv, "laser_scan_publisher");
   ros::NodeHandle n;
+
+  //advertise to ROS_Master that this node is publishing to a topic called /scan
   ros::Publisher scan_pub = n.advertise<sensor_msgs::LaserScan>("scan", 50);
 
   //create basic "laser info" for fake data
@@ -27,7 +29,6 @@ int main(int argc, char** argv)
       ranges[i] = dist;
       intensities[i] = 100 + dist;
     }
-    //ros::Time scan_time = ros::Time::now();
 
     //populate the LaserScan message
     sensor_msgs::LaserScan scan;
@@ -54,7 +55,9 @@ int main(int argc, char** argv)
     //publish the msg
     scan_pub.publish(scan);
     
+    //increases the laserscan size
     ++dist;
+    
     //controls the frequency of the loop
     r.sleep();
   }

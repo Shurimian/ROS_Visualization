@@ -7,6 +7,8 @@ int main(int argc, char** argv)
 
   ros::init(argc, argv, "odom_data_pub");
   ros::NodeHandle n;
+
+  //advertise to ROS_Master that this node is publishing to a topic called /odom
   ros::Publisher odom_pub = n.advertise<nav_msgs::Odometry>("odom", 50);
 
   //create basic "odom info" for fake data
@@ -21,14 +23,12 @@ int main(int argc, char** argv)
   quat.z = 0;
   quat.w = 1;
 
+  //controls frequency of data publication
   ros::Rate r(0.5);
 
   //run loop while node is active
   while(n.ok())
   {
-
-    //ros::Time scan_time = ros::Time::now();
-
     //populate the odometry message
     nav_msgs::Odometry odomData;
     odomData.header.stamp = ros::Time::now();
@@ -45,7 +45,9 @@ int main(int argc, char** argv)
     //publish the msg
     odom_pub.publish(odomData);
     
+    //gradually move the robot forwards
     ++x;
+
     //controls the frequency of the loop
     r.sleep();
   }
