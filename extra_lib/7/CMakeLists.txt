@@ -1,1 +1,1 @@
-add_library(include/7 iostream vector cstring)
+add_library(extra_lib/7 iostream vector cstring)

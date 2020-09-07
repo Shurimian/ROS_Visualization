@@ -114,7 +114,7 @@ find_package (Eigen3 3.3 REQUIRED NO_MODULE)
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-   INCLUDE_DIRS include/7
+   INCLUDE_DIRS extra_lib/7
 #  LIBRARIES using_markers
 #  CATKIN_DEPENDS roscpp visualization_msgs sensor_msgs geometry_msgs tf nav_msgs laser_geometry
 #  DEPENDS system_lib
@@ -125,15 +125,15 @@ catkin_package(
 ###########
 
 ## Adding a subdirectory
-add_subdirectory(include/7)
+add_subdirectory(extra_lib/7)
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-  include/7
+  extra_lib/7
   ${catkin_INCLUDE_DIRS}
 )
-# target_include_directories(${CMAKE_SOURCE_DIR}/src/using_markers/include/7)
+# target_include_directories(${CMAKE_SOURCE_DIR}/src/using_markers/extra_lib/7)
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -241,5 +241,5 @@ target_link_libraries(odomData ${catkin_LIBRARIES})
 add_executable(dataConvert src/dataConvert.cpp)
 target_link_libraries(dataConvert ${catkin_LIBRARIES})
 target_link_libraries(dataConvert Eigen3::Eigen)
-target_link_libraries(dataConvert PUBLIC include/7)
-target_include_directories(dataConvert PUBLIC "${PROJECT_BINARY_DIR}" "${PROJECT_SOURCE_DIR}/include/7")
+target_link_libraries(dataConvert PUBLIC extra_lib/7)
+target_include_directories(dataConvert PUBLIC "${PROJECT_BINARY_DIR}" "${PROJECT_SOURCE_DIR}/extra_lib/7")
