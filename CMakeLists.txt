@@ -124,6 +124,9 @@ catkin_package(
 ## Build ##
 ###########
 
+## Adding a subdirectory
+add_subdirectory(include/7)
+
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
@@ -238,3 +241,5 @@ target_link_libraries(odomData ${catkin_LIBRARIES})
 add_executable(dataConvert src/dataConvert.cpp)
 target_link_libraries(dataConvert ${catkin_LIBRARIES})
 target_link_libraries(dataConvert Eigen3::Eigen)
+target_link_libraries(dataConvert PUBLIC include/7)
+target_include_directories(dataConvert PUBLIC "${PROJECT_BINARY_DIR}" "${PROJECT_SOURCE_DIR}/include/7")
