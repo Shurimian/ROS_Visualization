@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(using_markers)
+project(using_markers C)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -241,5 +241,5 @@ target_link_libraries(odomData ${catkin_LIBRARIES})
 add_executable(dataConvert src/dataConvert.cpp)
 target_link_libraries(dataConvert ${catkin_LIBRARIES})
 target_link_libraries(dataConvert Eigen3::Eigen)
-target_link_libraries(dataConvert PUBLIC extra_lib/7)
-target_include_directories(dataConvert PUBLIC "${PROJECT_BINARY_DIR}" "${PROJECT_SOURCE_DIR}/extra_lib/7")
+target_link_libraries(dataConvert 7)
+set_target_properties(7 PROPERTIES LINKER_LANGUAGE CXX)
