@@ -1,0 +1,1 @@
+add_library(7 iostream vector cstring)
